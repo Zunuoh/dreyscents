@@ -65,7 +65,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Example = () =>{
+const CartScreen = () =>{
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
@@ -274,5 +274,5 @@ const Example = () =>{
   )
 }
 
-export default Example;
+export default CartScreen;
 
