@@ -1,21 +1,14 @@
-import { Fragment, useState } from 'react'
+import {  useState } from 'react'
 import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
   Popover,
   PopoverButton,
   PopoverGroup,
   PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
 } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import HomeScreenCategory from './HomeScreenCategory'
 import FooterSection from '../../shared/Footer/Footer'
+import FinalStockScreen from './FinalStockScreen'
 
 const navigation = {
   categories: [
@@ -174,91 +167,7 @@ const HomeScreen = () => {
   return (
     <div className="bg-white">
       {/* Mobile menu */}
-      <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
-        <DialogBackdrop
-          transition
-          className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
-        />
-
-        <div className="fixed inset-0 z-40 flex">
-          <DialogPanel
-            transition
-            className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
-          >
-            <div className="flex px-4 pb-2 pt-5">
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-              >
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Links */}
-            <TabGroup className="mt-2">
-              <div className="border-b border-gray-200">
-                <TabList className="-mb-px flex space-x-8 px-4">
-                  {navigation.categories.map((category) => (
-                    <Tab
-                      key={category.name}
-                      className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
-                    >
-                      {category.name}
-                    </Tab>
-                  ))}
-                </TabList>
-              </div>
-              <TabPanels as={Fragment}>
-                {navigation.categories.map((category) => (
-                  <TabPanel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-                    <div className="grid grid-cols-2 gap-x-4">
-                      {category.featured.map((item) => (
-                        <div key={item.name} className="group relative text-sm">
-                          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                            <img alt={item.imageAlt} src={item.imageSrc} className="object-cover object-center" />
-                          </div>
-                          <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                            <span aria-hidden="true" className="absolute inset-0 z-10" />
-                            {item.name}
-                          </a>
-                          <p aria-hidden="true" className="mt-1">
-                            Shop now
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    {category.sections.map((section) => (
-                      <div key={section.name}>
-                        <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
-                          {section.name}
-                        </p>
-                        <ul
-                          role="list"
-                          aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                          className="mt-6 flex flex-col space-y-6"
-                        >
-                          {section.items.map((item) => (
-                            <li key={item.name} className="flow-root">
-                              <a href={item.href} className="-m-2 block p-2 text-gray-500">
-                                {item.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </TabPanel>
-                ))}
-              </TabPanels>
-            </TabGroup>
-
-            
-          </DialogPanel>
-        </div>
-      </Dialog>
+    {/* <DialogScreen/> */}
 
       <header className="relative overflow-hidden">
         {/* Top navigation */}
@@ -474,90 +383,8 @@ const HomeScreen = () => {
         {/* Category section */}
         <HomeScreenCategory/>
 
-      
-
-        
-
         {/* CTA section */}
-        <section aria-labelledby="sale-heading">
-          <div className="overflow-hidden pt-32 sm:pt-14">
-            <div className="bg-gray-800">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="relative pb-16 pt-48 sm:pb-24">
-                  <div>
-                    <h2 id="sale-heading" className="text-4xl font-bold tracking-tight text-white md:text-5xl">
-                      Final Stock.
-                      <br />
-                      Up to 50% off.
-                    </h2>
-                    <div className="mt-6 text-base">
-                      <a href="#" className="font-semibold text-white">
-                        Shop the sale
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="absolute -top-32 left-1/2 -translate-x-1/2 transform sm:top-6 sm:translate-x-0">
-                    <div className="ml-24 flex min-w-max space-x-6 sm:ml-3 lg:space-x-8">
-                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="flex-shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="flex-shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-01.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-02.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="flex-shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 flex-shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg"
-                            className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FinalStockScreen/>
       </main>
 
       <FooterSection/>
