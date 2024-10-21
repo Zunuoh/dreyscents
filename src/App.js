@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 const HomeScreen = lazy(() => import('./screens/HomeScreen/HomeScreen'));
-const CartScreen = lazy(()=> import('./screens/CartScreen/CartScreen'));
-const ProductScreen = lazy(() => import('./screens/ProductScreen/ProductScreen'))
+const ProductOverview = lazy(()=> import('./screens/ProductOverviewScreen/ProductOverviewScreen'));
+const ProductScreen = lazy(() => import('./screens/ProductScreen/ProductScreen'));
+const CartScreen = lazy(() => import('./screens/CartScreen/CartScreen'));
+
 
 function App() {
   return(
@@ -13,7 +15,9 @@ function App() {
      <Routes>
        <Route path="/" element={<HomeScreen/>}/>
        <Route path="/product" element={<ProductScreen/>}/>
+       <Route path="/product-overview" element={<ProductOverview/>}/>
        <Route path="/cart" element={<CartScreen/>}/>
+
  
      </Routes>
     {/* </Suspense> */}
