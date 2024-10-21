@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { CurrencyDollarIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
+import HeaderScreen from '../../shared/Header/Header'
 
 const product = {
   name: 'Basic Tee',
@@ -71,6 +72,7 @@ const CartScreen = () =>{
 
   return (
     <div className="bg-white">
+      <HeaderScreen/>
       <div className="pb-16 pt-6 sm:pb-24">
         <nav aria-label="Breadcrumb" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ol role="list" className="flex items-center space-x-4">
